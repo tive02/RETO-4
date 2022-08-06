@@ -61,7 +61,7 @@ public class ReportesView {
                 Statement stmt = null;
                 ResultSet rs = null;
 
-                String csql = "SELECT Proyecto.ID_Proyecto, sum (Cantidad*Precio_Unidad ) as VALOR FROM Proyecto JOIN MaterialConstruccion ON Compra.ID_MaterialConstruccion = MaterialConstruccion.ID_MaterialConstruccion JOIN Compra ON Proyecto.ID_Proyecto = Compra.ID_Proyecto WHERE Pagado = 'No' GROUP by Proyecto.ID_Proyecto HAVING sum (Cantidad*Precio_Unidad ) >50000 ORDER by VALOR DESC; ";
+                String csql = "SELECT ID_Proyecto, sum (Cantidad*Precio_Unidad ) as VALOR FROM Proyecto JOIN MaterialConstruccion USING (ID_MaterialConstruccion) WHERE Pagado='No' GROUP BY ID_Proyecto HAVING VALOR > 50000 ORDER BY VALOR DESC";
                 stmt = conn.createStatement();
                 rs = stmt.executeQuery(csql);
 

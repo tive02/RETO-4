@@ -56,28 +56,6 @@ public class ReportesView {
             System.out.println(String.format("%3s %15s", "ID", "VALOR "));
             System.out.println(repitaCaracter('-', 29));
             // TODO Imprimir en pantalla la información del total adeudado
-            try {
-                var conn = JDBCUtilities.getConnection();
-                Statement stmt = null;
-                ResultSet rs = null;
-
-                String csql = "SELECT Proyecto.ID_Proyecto, sum (Cantidad*Precio_Unidad ) as VALOR FROM Proyecto JOIN MaterialConstruccion ON Compra.ID_MaterialConstruccion = MaterialConstruccion.ID_MaterialConstruccion JOIN Compra ON Proyecto.ID_Proyecto = Compra.ID_Proyecto WHERE Pagado = 'No' GROUP by Proyecto.ID_Proyecto HAVING sum (Cantidad*Precio_Unidad ) >50000 ORDER by VALOR DESC; ";
-                stmt = conn.createStatement();
-                rs = stmt.executeQuery(csql);
-
-                while (rs.next()) {
-                    int id = rs.getInt("ID_Proyecto");
-                    float valor = rs.getFloat("VALOR");
-                    System.out.println(String.format("%3d %,15.1f", id, valor));
-                }
-
-                rs.close();
-                stmt.close();
-                conn.close();
-            } catch (Exception e) {
-                // TODO: handle exception
-                System.out.println(e);
-            }
         }
     }
 
@@ -87,6 +65,27 @@ public class ReportesView {
         System.out.println(String.format("%-25s %15s", "LIDER", "VALOR "));
         System.out.println(repitaCaracter('-', 41));
         // TODO Imprimir en pantalla la información de los líderes
+        try {
+            var conn = JDBCUtilities.getConnection();
+            Statement stmt = null;
+            ResultSet rs = null;
 
+            String csql = "SELECT ID_Proyecto, sum (Cantidad*Precio_Unidad ) as VALOR FROM Proyecto JOIN MaterialConstruccion USING (ID_MaterialConstruccion) WHERE Pagado='No' GROUP BY ID_Proyecto HAVING VALOR > 50000 ORDER BY VALOR DESC";
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(csql);
+
+            while (rs.next()) {
+                int id = rs.getInt("ID_Proyecto");
+                float valor = rs.getFloat("VALOR");
+                System.out.println(String.format("%3d %,15.1f", id, valor));
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.out.println(e);
+        }
     }
 }
