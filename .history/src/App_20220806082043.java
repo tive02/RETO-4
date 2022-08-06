@@ -3,11 +3,8 @@ public class App {
         // var reportesView = new ReportesView();
         // var banco = "Conavi";
         // reportesView.proyectosFinanciadosPorBanco(banco);
-        // var reportesView = new ReportesView();
-        // var limiteInferior = 50_000d;
-        // reportesView.totalAdeudadoPorProyectosSuperioresALimite(limiteInferior);
         var reportesView = new ReportesView();
-        reportesView.lideresQueMasGastan();
-
+        var limiteInferior = 80_000d;
+        reportesView.totalAdeudadoPorProyectosSuperioresALimite(limiteInferior);
     }
 }

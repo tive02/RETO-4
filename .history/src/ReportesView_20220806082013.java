@@ -88,27 +88,6 @@ public class ReportesView {
         System.out.println(String.format("%-25s %15s", "LIDER", "VALOR "));
         System.out.println(repitaCaracter('-', 41));
         // TODO Imprimir en pantalla la información de los líderes
-        try {
-            var conn = JDBCUtilities.getConnection();
-            Statement stmt = null;
-            ResultSet rs = null;
 
-            String csql = "SELECT Lider.Nombre || ' ' || Primer_Apellido || ' ' || Segundo_Apellido as LIDER, sum( Cantidad * Precio_Unidad ) as VALOR FROM Lider JOIN Proyecto ON Proyecto.ID_Lider = Lider.ID_Lider JOIN Compra ON Proyecto.ID_Proyecto = Compra.ID_Proyecto JOIN MaterialConstruccion ON Compra.ID_MaterialConstruccion = MaterialConstruccion.ID_MaterialConstruccion GROUP BY Lider ORDER BY VALOR DESC LIMIT 10   ";
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(csql);
-
-            while (rs.next()) {
-                String lider = rs.getString("Lider");
-                float valor = rs.getFloat("VALOR");
-                System.out.println(String.format("%-25s %,15.1f", lider, valor));
-            }
-
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (Exception e) {
-            // TODO: handle exception
-            System.out.println(e);
-        }
     }
 }

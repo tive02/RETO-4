@@ -98,9 +98,9 @@ public class ReportesView {
             rs = stmt.executeQuery(csql);
 
             while (rs.next()) {
-                String lider = rs.getString("Lider");
+                int id = rs.getInt("ID_Proyecto");
                 float valor = rs.getFloat("VALOR");
-                System.out.println(String.format("%-25s %,15.1f", lider, valor));
+                System.out.println(String.format("%3d %,15.1f", id, valor));
             }
 
             rs.close();
@@ -110,5 +110,6 @@ public class ReportesView {
             // TODO: handle exception
             System.out.println(e);
         }
+    }
     }
 }
