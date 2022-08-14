@@ -1,7 +1,5 @@
-
+import Utilidades.*;
 import java.sql.*;
-
-import utilities.*;
 
 public class ReportesView {
     private String repitaCaracter(Character caracter, Integer veces) {
