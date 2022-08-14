@@ -1,4 +1,4 @@
-import view.*;
+import view.ReportesView;
 
 public class ReportesController {
     public static void main(String[] args) throws Exception {

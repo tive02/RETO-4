@@ -4,9 +4,9 @@ import java.sql.*;
 import model.dao.*;
 
 public class ProyectoBandoVo {
-    public static void valores(String banco) {
+    public static void valore() {
         try {
-            ResultSet rs = ProyectoBancoDao.consulta(banco);
+            ResultSet rs = null;
 
             while (rs.next()) {
                 int id = rs.getInt("ID");
@@ -20,7 +20,8 @@ public class ProyectoBandoVo {
             }
 
             rs.close();
-
+            stmt.close();
+            conn.close();
         } catch (Exception e) {
             // TODO: handle exception
             System.out.println(e);

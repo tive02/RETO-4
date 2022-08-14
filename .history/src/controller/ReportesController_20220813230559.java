@@ -1,10 +1,10 @@
-import view.*;
+package controller;
 
 public class ReportesController {
     public static void main(String[] args) throws Exception {
         var reportesView = new ReportesView();
         var banco = "Conavi";
-        reportesView.proyectosFinanciadosPorBanco(banco);
+        // reportesView.proyectosFinanciadosPorBanco(banco);
         // var reportesView = new ReportesView();
         // var limiteInferior = 50_000d;
         // reportesView.totalAdeudadoPorProyectosSuperioresALimite(limiteInferior);

@@ -3,6 +3,7 @@ import java.sql.*;
 
 import utilities.*;
 
+import model.dao.*;
 import model.vo.ProyectoBandoVo;
 
 public class ReportesView {

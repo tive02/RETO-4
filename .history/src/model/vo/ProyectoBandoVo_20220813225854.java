@@ -20,7 +20,8 @@ public class ProyectoBandoVo {
             }
 
             rs.close();
-
+            stmt.close();
+            conn.close();
         } catch (Exception e) {
             // TODO: handle exception
             System.out.println(e);
