@@ -4,7 +4,6 @@ import java.sql.*;
 import utilities.*;
 import model.vo.DeudasPorProyectoVo;
 import model.vo.ProyectoBandoVo;
-import model.vo.ComprasDelLiderVo;
 
 public class ReportesView {
     private String repitaCaracter(Character caracter, Integer veces) {

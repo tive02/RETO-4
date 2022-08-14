@@ -3,15 +3,15 @@ package model.vo;
 import java.sql.*;
 import model.dao.*;
 
-public class ComprasDelLiderVo {
-    public static void valores() {
+public class DeudasPorProyectoVo {
+    public static void valores(Double limiteInferior) {
         try {
-            ResultSet rs = ComprasDelLiderDao.consulta();
+            ResultSet rs = DeudasPorProyectoVo.consulta(limiteInferior);
 
             while (rs.next()) {
-                String lider = rs.getString("Lider");
+                int id = rs.getInt("ID_Proyecto");
                 float valor = rs.getFloat("VALOR");
-                System.out.println(String.format("%-25s %,15.1f", lider, valor));
+                System.out.println(String.format("%3d %,15.1f", id, valor));
             }
 
             rs.close();
